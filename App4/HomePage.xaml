@@ -13,7 +13,7 @@
             <RowDefinition Height="400"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" HorizontalAlignment="Left" TextWrapping="Wrap" x:Name="txtHome" Height="339" Margin="10,10,0,0" VerticalAlignment="Top" Width="777" SelectionChanged="RichTextBlock_SelectionChanged" FontSize="36"><Run Text="- "/><Run Text="CustomVision.AI - Object Recognition"/><LineBreak/><Run/><LineBreak/><Run Text="La siguiente POC hace una introducción a modelos de reconocimiento de objetos y personas"/><LineBreak/><Run/></TextBlock>
-            <Image Grid.Row="1" Source="ms-appx:///Assets/Softtek.png" HorizontalAlignment="Right"></Image>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Left" TextWrapping="Wrap" x:Name="txtHome" Height="339" Margin="10,10,0,0" VerticalAlignment="Top" Width="777" SelectionChanged="RichTextBlock_SelectionChanged" FontSize="36" Text="- CustomVision.AI - Object Recognition&#xD;&#xA;&#xD;&#xA;La siguiente PoC hace una introducciￃﾳn a modelos de reconocimiento de objetos y personas&#xD;&#xA;"/>
+        <Image Grid.Row="1" Source="ms-appx:///Assets/Softtek.png" HorizontalAlignment="Right"></Image>
     </Grid>
 </Page>

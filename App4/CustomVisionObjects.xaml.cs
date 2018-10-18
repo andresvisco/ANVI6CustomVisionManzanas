@@ -31,6 +31,7 @@ using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training;
 using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training.Models;
 using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction;
 using System.Collections;
+using Windows.UI;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace App5
@@ -186,7 +187,7 @@ namespace App5
                             {
                                 var resultadoCaja = item.boundingBox;
                                 var resultadoTag = item.tagName;
-                                if (item.probability * 100 >= 55)
+                                if (item.probability * 100 >= 75)
                                 {
                                     imagePreview.Opacity = 1;
                                     imagePreview.Visibility = Visibility.Visible;
@@ -201,6 +202,12 @@ namespace App5
 
                             }
                             txtResult.Text = "Se encontraron: " + contador.ToString() + " elementos";
+
+                            SolidColorBrush solidColorBrushSalud = new SolidColorBrush(Windows.UI.Colors.Green);
+                            txtResultSalud.Foreground = solidColorBrushSalud;
+
+                            txtResultSalud.Text = "La salud del cultivo es OPTIMA";
+                            
                            
                           
                         }
@@ -259,8 +266,8 @@ namespace App5
 
             var items = await CortarImagenesTageadas.ImagenACortar(pointCaja, sizeCaja, storageFile, imagePreview.ActualWidth);
             Items.Add(new Tuple<ImageSource, Point, Size>(items,pointCaja,sizeCaja));
-            lstViewImagenesTageadas.ItemTemplate.SetValue(WidthProperty, sizeCaja.Width);
-            lstViewImagenesTageadas.ItemTemplate.SetValue(HeightProperty, sizeCaja.Height);
+            //lstViewImagenesTageadas.ItemTemplate.SetValue(WidthProperty, sizeCaja.Width);
+            //lstViewImagenesTageadas.ItemTemplate.SetValue(HeightProperty, sizeCaja.Height);
 
             Microsoft.Toolkit.Uwp.UI.Controls.OrbitViewDataItem orbitViewDataItem = new Microsoft.Toolkit.Uwp.UI.Controls.OrbitViewDataItem();
             orbitViewDataItem.Distance = ubicacionLeft / 10;
@@ -345,17 +352,9 @@ namespace App5
         public async Task ObtenerImagen()
         {
         }
-        private void Button_ClickOrbit(object sender, RoutedEventArgs e)
-        {
-            ContentFrame.Visibility = Visibility.Visible;
-            ContentFrame.Navigate(typeof(Orbit),orbitViewDataItemCollection);
+       
 
-        }
-
-        private void Button_ClickOrbitCerrar(object sender, RoutedEventArgs e)
-        {
-            this.ContentFrame.Visibility = Visibility.Collapsed;
-        }
+    
         public  ObservableCollection<Tuple<Windows.UI.Xaml.Media.ImageSource, Point, Size>> _items = new ObservableCollection<Tuple<Windows.UI.Xaml.Media.ImageSource, Point, Size>>();
         public  ObservableCollection<Tuple<Windows.UI.Xaml.Media.ImageSource, Point, Size>> Items
         {
