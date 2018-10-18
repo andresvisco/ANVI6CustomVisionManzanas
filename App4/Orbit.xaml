@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="App5.Orbit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App5"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls" Width="600" Height="500"
+
+    >
+    <Page.Resources>
+        <local:StringFormatConverter x:Key="PercentageStringFormatConverter" StringFormat="Valor: {0}"/>
+    </Page.Resources>
+    <Grid Width="600" Height="500">
+        <controls:OrbitView OrbitsEnabled="True" AnchorsEnabled="True" Width="600" 
+                    IsItemClickEnabled="True" MinItemSize="20" 
+                    MaxItemSize="60" AnchorColor="Gray" OrbitColor="Gray" x:Name="orbOrbit" ItemsSource="{x:Bind orbitViewDataItems}" AllowDrop="True">
+            <controls:OrbitView.ItemTemplate>
+                <DataTemplate x:DataType="controls:OrbitViewDataItem">
+                    <Grid Width="100" Height="100" >
+
+                        <StackPanel>
+                            <TextBlock Text="{x:Bind Label}"  Width="100" FontSize="11" Margin="0,0,0,0" VerticalAlignment="Top"></TextBlock>
+
+                            <TextBlock Text="{x:Bind Distance, Converter={StaticResource PercentageStringFormatConverter}}" FontSize="12" Width="100" VerticalAlignment="Top"></TextBlock>
+
+                        </StackPanel>
+
+                        <Ellipse Width="{Binding Diameter*10}" Margin="0,30,0,0" Height="{Binding Diameter*10}"  StrokeThickness="1" Stroke="Green" >
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{x:Bind Image}" ></ImageBrush>
+                                </Ellipse.Fill>
+
+                            </Ellipse>
+
+                        
+
+                    </Grid>
+                </DataTemplate>
+            </controls:OrbitView.ItemTemplate>
+            <controls:OrbitView.CenterContent>
+                <Grid>
+                    <controls:DropShadowPanel>
+                        <Ellipse Fill="White" Height="{x:Bind orbitViewDataItemCenter.Diameter}" Width="{x:Bind orbitViewDataItemCenter.Diameter}" Stroke="Black" StrokeThickness="1"></Ellipse>
+                    </controls:DropShadowPanel>
+                    <Ellipse Height="{x:Bind orbitViewDataItemCenter.Diameter}" Width="{x:Bind orbitViewDataItemCenter.Diameter}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{x:Bind orbitViewDataItemCenter.Image}"></ImageBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <StackPanel>
+                        <TextBlock Text="{x:Bind orbitViewDataItemCenter.Item}" FontSize="12" Width="100" Margin="0,0,0,0"></TextBlock>
+                        <TextBlock Text="{x:Bind orbitViewDataItemCenter.Diameter}" FontSize="12" Width="100"></TextBlock>
+                    </StackPanel>
+                </Grid>
+            </controls:OrbitView.CenterContent>
+
+        </controls:OrbitView>
+    </Grid>
+</Page>

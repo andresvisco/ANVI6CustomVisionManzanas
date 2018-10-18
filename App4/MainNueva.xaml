@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="App5.MainNueva"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App5"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    
+    <Grid>
+        <NavigationView IsSettingsVisible="True" 
+                        x:Name="navView"
+                        ItemInvoked="navView_ItemInvoked"
+                        Loaded="navView_Loaded"
+                        BackRequested="navView_BackRequested"
+                        
+                        
+                        >
+            <NavigationView.MenuItems>
+              
+                <NavigationViewItem x:Uid="HomeNavItem" Content="Home" Tag="home">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE10F;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItemSeparator/>
+                
+                <NavigationViewItemHeader Content="Customvision.AI ObjectDetection"/>
+                <NavigationViewItem x:Uid="AppsNavItem" Icon="BrowsePhotos"  Content="CustomVision" Tag="customvisionObject"/>
+                
+                    
+                
+            
+            </NavigationView.MenuItems>
+            
+
+        </NavigationView>
+        <Button Visibility="Collapsed" x:Name="check" Content="chequear" Click="check_Click"></Button>
+        <Frame x:Name="ContentFrame" Margin="350,0,0,0" Width="900" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <NavigationThemeTransition/>
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
+    </Grid>
+</Page>

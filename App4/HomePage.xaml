@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="App5.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App5"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="800" Height="600">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="400"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Left" TextWrapping="Wrap" x:Name="txtHome" Height="339" Margin="10,10,0,0" VerticalAlignment="Top" Width="777" SelectionChanged="RichTextBlock_SelectionChanged" FontSize="36"><Run Text="- "/><Run Text="CustomVision.AI - Object Recognition"/><LineBreak/><Run/><LineBreak/><Run Text="La siguiente POC hace una introducción a modelos de reconocimiento de objetos y personas"/><LineBreak/><Run/></TextBlock>
+            <Image Grid.Row="1" Source="ms-appx:///Assets/Softtek.png" HorizontalAlignment="Right"></Image>
+    </Grid>
+</Page>
